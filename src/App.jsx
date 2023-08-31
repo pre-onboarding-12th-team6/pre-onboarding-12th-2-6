@@ -1,9 +1,12 @@
-import ErrorPage from './error/ErrorPage';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes/Router';
 
 function App() {
 	return (
 		<div className="App">
-			<ErrorPage />
+			<BrowserRouter>
+				<Router />
+			</BrowserRouter>
 		</div>
 	);
 }
