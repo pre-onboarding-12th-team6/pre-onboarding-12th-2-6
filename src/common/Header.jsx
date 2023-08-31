@@ -1,17 +1,17 @@
 import { styled } from 'styled-components';
 
 const Header = () => {
-  // const navigate = useNavigate();
-  return (
-    <HeaderContainer>
-      <div className="inner">
-        <div className="title">
-          {/* <div className="title" onClick={() => navigate('/')}> */}
-          {'facebook/react'}
-        </div>
-      </div>
-    </HeaderContainer>
-  );
+	// const navigate = useNavigate();
+	return (
+		<HeaderContainer>
+			<div className="inner">
+				<div className="title">
+					{/* <div className="title" onClick={() => navigate('/')}> */}
+					{'facebook/react'}
+				</div>
+			</div>
+		</HeaderContainer>
+	);
 };
 
 const HeaderContainer = styled.header`
