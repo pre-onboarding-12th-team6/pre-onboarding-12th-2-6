@@ -10,6 +10,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-markdown": "^8.0.7",
+		"react-router-dom": "^6.15.0",
 		"react-scripts": "5.0.1",
 		"styled-components": "^6.0.7",
 		"web-vitals": "^2.1.4"
@@ -22,7 +23,9 @@
 		"lint": "eslint --cache './src/**/*.{js,jsx}'",
 		"lint:fix": "eslint --fix './src/**/*.{js,jsx}'",
 		"prettier": "prettier --write --config ./.prettierrc './src/**/*.{js,jsx}'",
-		"format": "prettier --cache --write ."
+		"format": "prettier --cache --write .",
+		"postinstall": "husky install",
+		"prepare": "husky install"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -43,7 +46,7 @@
 		]
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^10.1.0",
+		"@babel/eslint-parser": "^7.22.11",
 		"eslint": "^8.48.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-import": "^2.28.1",
@@ -51,6 +54,15 @@
 		"eslint-plugin-prettier": "^5.0.0",
 		"eslint-plugin-react": "^7.33.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
-		"eslint-scope": "^7.2.2"
+		"eslint-scope": "^7.2.2",
+		"husky": "^8.0.3",
+		"lint-staged": "^14.0.1",
+		"prettier": "^3.0.3"
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"prettier --write",
+			"eslint --fix"
+		]
 	}
 }
