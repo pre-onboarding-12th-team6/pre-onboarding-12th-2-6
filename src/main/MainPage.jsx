@@ -48,10 +48,10 @@ const MainPage = () => {
 				{issueList.map((issue, idx) => {
 					const isBannerVisible = (idx + 1) % 4 === 0;
 					return (
-						<List key={`${issue.number}-${idx}`}>
+						<li key={`${issue.number}-${idx}`}>
 							<IssueItem issue={issue} />
 							{isBannerVisible && <AdBanner />}
-						</List>
+						</li>
 					);
 				})}
 				{loading && <Loading />}
@@ -63,13 +63,7 @@ const MainPage = () => {
 };
 
 const Wrap = styled.ul`
-	border: 1px solid var(--color-placeholder);
-	border-radius: 20px;
-`;
-
-const List = styled.li`
-	padding: 24px;
-	border-bottom: 1px solid var(--color-placeholder);
+	padding: 20px;
 `;
 
 export default MainPage;

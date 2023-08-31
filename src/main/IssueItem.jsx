@@ -6,6 +6,11 @@ const IssueItem = ({ issue }) => {
 	const { number, title, user, created_at, comments } = issue;
 
 	const navigate = useNavigate();
+	const createdData = new Date(created_at).toLocaleDateString('ko-KR', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
 
 	const goToDetail = (path) => {
 		return () => {
@@ -14,34 +19,81 @@ const IssueItem = ({ issue }) => {
 	};
 
 	return (
-		<article>
-			<Div>
-				<h2
-					onClick={goToDetail(`detail/${number}`)}
-				>{`#${number} ${title}`}</h2>
-				<Comment>{comments}</Comment>
-			</Div>
-
-			<p>{`작성자: ${user.login} / 작성일: ${created_at.slice(0, 10)}`}</p>
-		</article>
+		<IssueItemContainer>
+			<IssueInfoSection>
+				<div className="about-issue">
+					<div className="issue-number">{'#' + number}</div>
+					<div
+						className="issue-title"
+						onClick={goToDetail(`/issues/${number}`)}
+					>
+						{title}
+					</div>
+				</div>
+				<div className="about-record">
+					<div className="issue-user">
+						<span>작성자 : </span>
+						<span>{user.login},</span>
+					</div>
+					<div className="issue-date">{createdData}</div>
+				</div>
+			</IssueInfoSection>
+			<CommentSection>
+				<span>코멘트</span>
+				<span>{comments}</span>
+			</CommentSection>
+		</IssueItemContainer>
 	);
 };
 
-const Div = styled.div`
+const IssueItemContainer = styled.div`
+	position: relative;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	padding-bottom: 12px;
+	padding: 10px 20px;
+	border-bottom: 1px solid #d3d3d3;
+`;
+const IssueInfoSection = styled.section`
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	.about-issue {
+		display: flex;
+		flex-direction: row;
+		gap: 12px;
+
+		.issue-number {
+			font-weight: 700;
+			color: darkgreen;
+		}
+		.issue-title {
+			font-weight: 700;
+			cursor: pointer;
+			white-space: pre-line;
+		}
+	}
+	.about-record {
+		display: flex;
+		flex-direction: row;
+		gap: 12px;
+		color: #707070;
+
+		.issue-user {
+			display: flex;
+			flex-direction: row;
+			gap: 5px;
+		}
+	}
 `;
 
-const Comment = styled.div`
-	padding: 4px 10px;
-	margin-left: 16px;
-	border-radius: 20px;
-	background-color: var(--color-primary);
-	color: var(--color-white);
-	font-size: 14px;
-	font-weight: bold;
+const CommentSection = styled.section`
+	width: 80px;
+	margin: auto 0;
+	display: flex;
+	text-align: center;
+	gap: 5px;
+	color: #707070;
 `;
-
 export default IssueItem;
