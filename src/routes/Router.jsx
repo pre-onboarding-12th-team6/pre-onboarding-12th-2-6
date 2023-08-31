@@ -5,28 +5,36 @@ import MainPage from '../main/MainPage';
 import DetailPage from '../detail/DetailPage';
 import ErrorPage from '../error/ErrorPage';
 
+const Path = {
+	home: routePath.home.path,
+	issues: routePath.issues.path,
+	detailIssue: routePath.detailIssue.path,
+	errorRedirect: routePath.errorRedirect.path,
+	error: routePath.error.path,
+};
+
 const Router = () => {
 	const routes = useRoutes([
 		{
-			path: routePath.home.path,
-			element: <Navigate to={routePath.issues.path} />,
+			path: Path.home,
+			element: <Navigate to={Path.issues} />,
 			replace: true,
 		},
 		{
-			path: routePath.issues.path,
+			path: Path.issues,
 			element: <MainPage />,
 		},
 		{
-			path: routePath.issuesDetail.path,
+			path: Path.detailIssue,
 			element: <DetailPage />,
 		},
 		{
-			path: routePath.errorRedirect.path,
+			path: Path.errorRedirect,
 			element: <Navigate to={routePath.error.path} />,
 			replace: true,
 		},
 		{
-			path: routePath.error.path,
+			path: Path.error,
 			element: <ErrorPage />,
 		},
 	]);
