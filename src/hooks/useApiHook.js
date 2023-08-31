@@ -22,7 +22,7 @@ const changeObjProps = (issue) => {
 };
 const ERROR_MESSAGES = '데이터 호출에 실패했습니다';
 
-function useApiHooks(fetchFunction, params) {
+function useApiHook(fetchFunction, params) {
 	const [issues, setIssues] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
@@ -76,4 +76,4 @@ function useApiHooks(fetchFunction, params) {
 	return { issues, isLoading, isError, hasNextPage };
 }
 
-export default useApiHooks;
+export default useApiHook;
