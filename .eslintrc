@@ -1,0 +1,22 @@
+{
+	"parser": "@babel/eslint-parser",
+	"extends": ["react-app", "eslint:recommended", "prettier"],
+	"rules": {
+		"no-var": "error",
+		"no-multiple-empty-lines": "error",
+		"no-console": ["error", { "allow": ["warn", "error", "info"] }],
+		"eqeqeq": "error",
+		"dot-notation": "error",
+		"no-unused-vars": "error",
+		"no-alert": "off",
+		"react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never"
+			}
+		]
+	}
+}
