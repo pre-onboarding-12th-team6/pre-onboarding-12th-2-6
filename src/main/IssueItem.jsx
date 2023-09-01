@@ -1,16 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { dateParsing } from '../util/dateParsing';
 
 const IssueItem = ({ issue }) => {
 	const { number, title, login, created_at, comments } = issue;
 
 	const navigate = useNavigate();
-	const createdData = new Date(created_at).toLocaleDateString('ko-KR', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
+	const createdDate = dateParsing(created_at);
 
 	const goToDetail = (path) => {
 		return () => {
@@ -35,7 +32,7 @@ const IssueItem = ({ issue }) => {
 						<span>작성자 : </span>
 						<span>{login},</span>
 					</div>
-					<div className="issue-date">{createdData}</div>
+					<div className="issue-date">{createdDate}</div>
 				</div>
 			</IssueInfoSection>
 			<CommentSection>
