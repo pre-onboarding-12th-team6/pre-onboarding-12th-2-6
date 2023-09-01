@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const AdBanner = () => {
 	return (
 		<BannerContainer>
-			<a href={BANNER_INFO.to}>
+			<a href={BANNER_INFO.to} target="_blank" rel="noreferrer">
 				<img src={BANNER_INFO.img} alt="wanted banner" />
 			</a>
 		</BannerContainer>
