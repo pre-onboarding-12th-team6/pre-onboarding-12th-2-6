@@ -1,43 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getIssuesDetail } from '../api/request';
 import MDEditor from '@uiw/react-md-editor';
+import useApiHook from '../hooks/useApiHook';
+import { dateParsing } from '../util/dateParsing';
 
 const DetailPage = () => {
 	const { id } = useParams();
-	const [issueDetail, setIssueDetail] = useState();
+	const navigate = useNavigate();
+	const { issues, isError } = useApiHook(getIssuesDetail, id);
+	const createdDate = dateParsing(issues.created_at);
 
-	useEffect(() => {
-		const requestGetIssueDetail = async () => {
-			const { data } = await getIssuesDetail(id);
-			setIssueDetail(data);
-		};
-		requestGetIssueDetail();
-	}, [id]);
+	if (isError) {
+		navigate('/error');
+	}
 
 	return (
 		<Wrapper>
-			{issueDetail && (
+			{issues && (
 				<>
 					<CenteredContainer>
-						<Img src={issueDetail.user.avatar_url} alt="아바타 이미지" />
+						<Img src={issues.avatar_url} alt="아바타 이미지" />
 						<section>
 							<Title>
-								<h2>{`#${issueDetail.number} ${issueDetail.title}`}</h2>
-								<Comment>{issueDetail.comments}</Comment>
+								<h2>{`#${issues.number} ${issues.title}`}</h2>
+								<Comment>{issues.comments}</Comment>
 							</Title>
-							<p>{`작성자: ${
-								issueDetail.user.login
-							} / 작성일: ${issueDetail.created_at.slice(0, 10)}`}</p>
+							<p>{`작성자: ${issues.login} / 작성일: ${createdDate}`}</p>
 						</section>
 					</CenteredContainer>
 
 					<Content data-color-mode="light">
-						<MDEditor.Markdown
-							style={{ padding: 10 }}
-							source={issueDetail.body}
-						/>
+						<MDEditor.Markdown style={{ padding: 10 }} source={issues.body} />
 					</Content>
 				</>
 			)}
