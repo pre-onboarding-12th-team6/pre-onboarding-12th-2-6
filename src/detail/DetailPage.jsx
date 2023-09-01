@@ -4,16 +4,22 @@ import styled from 'styled-components';
 import { getIssuesDetail } from '../api/request';
 import MDEditor from '@uiw/react-md-editor';
 import useApiHook from '../hooks/useApiHook';
-import { dateParsing } from '../util/dateParsing';
+// import { dateParsing } from '../util/dateParsing';
+import Loading from '../common/Loading';
 
 const DetailPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const { issues, isError } = useApiHook(getIssuesDetail, id);
-	const createdDate = dateParsing(issues.created_at);
+	const { issues, isError, isLoading } = useApiHook(getIssuesDetail, id);
+	// const createdDate = dateParsing(issues.created_at);
+	const createdDate = issues.created_at.slice(0, 10);
 
 	if (isError) {
 		navigate('/error');
+	}
+
+	if (isLoading) {
+		return <Loading />;
 	}
 
 	return (

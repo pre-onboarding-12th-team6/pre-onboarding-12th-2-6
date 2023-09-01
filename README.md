@@ -200,4 +200,19 @@ function App() {
 1. 관심사 분리를 기준으로 path의 요소들을 분리하여 관리
 2. 가독성 증대를 위해 path의 요소들을 선언하여 Router에서 사용
 
----
+# Date Parsing 유틸 함수 사용
+
+```js
+// src/util/dateParsing.js
+
+export const dateParsing = (created_at) => {
+	return new Date(created_at).toLocaleDateString('ko-KR', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+};
+```
+
+- issueItem과 detail 컴포넌트에서는 불필요한 state 사용을 줄이기 위해 `useApiHook` 커스텀 훅을 통해 내려받은 리턴값을 사용해 화면을 렌더링합니다.
+- 리턴된 값 중 텍스트로 표시해야 하는 `create_at` 속성의 타입이 string이 아니기 때문에 parsing하는 로직이 필요했는데, 두 군데서 같은 로직을 사용하기 때문에 회의를 통해 util 폴더를 생성해 함수로 분리하기로 하였습니다.
