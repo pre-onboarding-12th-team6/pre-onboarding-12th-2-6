@@ -3,7 +3,7 @@ import { getIssuesList } from '../api/request';
 import AdBanner from './AdBanner';
 import IssueItem from './IssueItem';
 import Loading from '../common/Loading';
-import useObserver from '../hooks/customHook';
+import useObserver from '../hooks/useInfiniteScroll';
 import styled from 'styled-components';
 
 const MainPage = () => {
