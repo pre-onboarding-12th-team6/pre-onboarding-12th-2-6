@@ -102,10 +102,6 @@ const ErrorPage = () => {
 		navigate('/');
 	}, [navigate]);
 
-	const returnToPreviousPage = useCallback(() => {
-		navigate(-1);
-	}, [navigate]);
-
 	return (
 		<PageContainer>
 			<div>
@@ -117,7 +113,6 @@ const ErrorPage = () => {
 				</Subheader>
 			</div>
 			<ButtonWrapper>
-				<Button onClick={returnToPreviousPage}>이전 페이지로</Button>
 				<Button onClick={returnToMainPage}>메인 페이지로</Button>
 			</ButtonWrapper>
 		</PageContainer>
@@ -125,8 +120,8 @@ const ErrorPage = () => {
 };
 ```
 
-1. Router를 통해 잘못된 경로로 접속했을 경우 렌덜이
-2. 이전 페이지, 메인 페이지로 이동하는 기능 구현
+1. Router를 통해 잘못된 경로로 접속했을 경우 렌더링
+2. 메인 페이지로 이동하는 기능 구현
 
 ---
 
@@ -172,7 +167,7 @@ const Router = () => {
 		},
 		{
 			path: Path.errorRedirect,
-			element: <Navigate to={routePath.error.path} />,
+			element: <Navigate to={Path.error} />,
 			replace: true,
 		},
 		{
@@ -188,11 +183,9 @@ const Router = () => {
 ```javascript
 function App() {
 	return (
-		<div className="App">
-			<BrowserRouter>
-				<Router />
-			</BrowserRouter>
-		</div>
+		<BrowserRouter>
+			<Router />
+		</BrowserRouter>
 	);
 }
 ```
