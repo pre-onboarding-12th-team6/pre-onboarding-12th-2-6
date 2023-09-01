@@ -3,7 +3,7 @@ import { getIssuesList } from '../api/request';
 import AdBanner from './AdBanner';
 import IssueItem from './IssueItem';
 import Loading from '../common/Loading';
-import useObserver from '../hooks/useInfiniteScroll';
+import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import useApiHook from '../hooks/useApiHook';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +33,7 @@ const MainPage = () => {
 		getIssuesList,
 		params,
 	);
-	const lastItemRef = useObserver(hasNextPage, setPage);
+	const lastItemRef = useInfiniteScroll(hasNextPage, setPage);
 
 	if (isError) {
 		navigate('/error');
