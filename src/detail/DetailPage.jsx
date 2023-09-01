@@ -1,6 +1,7 @@
 // import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+// import IssueItem from '../main/IssueItem';
 
 const DetailPage = () => {
 	// const { id } = useParams();
@@ -19,25 +20,24 @@ const DetailPage = () => {
 	// }, []);
 
 	return (
-		<div></div>
-		// <Wrapper>
-		// 	<div>
-		// 		<CenteredContainer>
-		// 			{/* <Img src={issueDetail.user.avatar_url} alt="아바타 이미지" /> */}
-		//       {/* <IssueItem issue={issueDetail} /> */}
-		//       sdfsdf
-		// 		</CenteredContainer>
-		// 	</div>
-		// 	{/* <Content dangerouslySetInnerHTML={{ __html: htmlBody }} /> */}
-		// </Wrapper>
+		<Wrapper>
+			{/* <div>
+				<CenteredContainer>
+					<Img src={issueDetail.user.avatar_url} alt="아바타 이미지" />
+					<IssueItem issue={issueDetail} />
+					sdfsdf
+				</CenteredContainer>
+			</div> */}
+			<Content />
+		</Wrapper>
 	);
 };
 
-// const Wrapper = styled.div`
-// 	border: 1px solid var(--color-placeholder);
-// 	border-radius: 20px;
-// 	padding: 24px;
-// `;
+const Wrapper = styled.div`
+	border: 1px solid var(--color-placeholder);
+	border-radius: 20px;
+	padding: 24px;
+`;
 
 // const CenteredContainer = styled.div`
 // 	display: flex;
@@ -52,9 +52,9 @@ const DetailPage = () => {
 // 	padding-right: 16px;
 // `;
 
-// const Content = styled.p`
-// 	border-top: 1px solid var(--color-placeholder);
-// 	padding-top: 20px;
-// `;
+const Content = styled.p`
+	border-top: 1px solid var(--color-placeholder);
+	padding-top: 20px;
+`;
 
 export default DetailPage;

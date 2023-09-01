@@ -1,13 +1,16 @@
 import { styled } from 'styled-components';
+import { ORGANIZATION, REPOSITORY } from '../api/request';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 	return (
 		<HeaderContainer>
 			<div className="inner">
 				<div className="title">
-					{/* <div className="title" onClick={() => navigate('/')}> */}
-					{'facebook/react'}
+					<div className="title" onClick={() => navigate('/')}>
+						{ORGANIZATION + '/' + REPOSITORY}
+					</div>
 				</div>
 			</div>
 		</HeaderContainer>
