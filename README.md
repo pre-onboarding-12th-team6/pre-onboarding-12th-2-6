@@ -201,3 +201,53 @@ function App() {
 2. 가독성 증대를 위해 path의 요소들을 선언하여 Router에서 사용
 
 ---
+
+# 무한스크롤
+
+```tsx
+import { useCallback, useRef } from 'react';
+
+function useInfiniteScroll(hasNextPage, setPage) {
+	const observer = useRef();
+
+	const lastItemRef = useCallback(
+		(node) => {
+			if (observer.current) {
+				observer.current.disconnect();
+			}
+			observer.current = new IntersectionObserver((entries) => {
+				if (entries[0].isIntersecting && hasNextPage) {
+					setPage((prevPage) => prevPage + 1);
+				}
+			});
+
+			if (node) {
+				observer.current.observe(node);
+			}
+		},
+		[hasNextPage, setPage],
+	);
+
+	return lastItemRef;
+}
+
+export default useInfiniteScroll;
+```
+
+```tsx
+// main/MainPage.jsx
+
+const lastItemRef = useInfiniteScroll(hasNextPage, setPage);
+...
+<IssuesItem ref={lastItemRef} key={issue.number} issues={issue} />
+```
+
+- 관심사 분리를 위해 Custom Hook으로 구현하였습니다.
+- `IntersectionObserver`를 사용하여 페이지의 끝에 도달하면 다음 페이지로 이동할 수 있도록 설정하였습니다.
+- 마지막 항목인 경우, `ref={lastItemRef}`를 설정하여 `IntersectionObserver`가 활성화되도록 합니다.
+- 스크롤이 진행됨에 따라 `lastItemRef` 함수가 호출되고, `IntersectionObserver`에 의해 마지막 항목이 화면에 나타나면 `setPage`를 통해 다음 페이지를 로드하게 됩니다.
+
+❓ 선정 이유
+
+- Custom Hook을 사용하여 코드를 모듈화하고 별도의 함수로 분리함으로써 관심사를 분리하고 코드의 유지보수성을 향상시킬 수 있어 선정하였습니다.
+- Custom Hook을 이용하면 다른 컴포넌트에서도 쉽게 재사용할 수 있고 확장성을 높일 수 있을 것 같아 선정하였습니다.
