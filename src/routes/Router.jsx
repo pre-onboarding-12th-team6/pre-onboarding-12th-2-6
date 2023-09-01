@@ -30,7 +30,7 @@ const Router = () => {
 		},
 		{
 			path: Path.errorRedirect,
-			element: <Navigate to={routePath.error.path} />,
+			element: <Navigate to={Path.error} />,
 			replace: true,
 		},
 		{
