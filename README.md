@@ -1,57 +1,125 @@
-# 프로젝트 세팅
+# TEAM6 - Todo 애플리케이션
 
-- coding convention rule
+프리온보딩 1주차에 진행한 과제물입니다. <br/>
+기간 : 2023.08.22. ~ 2023.08.25. <br />
 
-```json
-// lint
-{
-	"parser": "@babel/eslint-parser",
-	"extends": ["react-app", "eslint:recommended", "prettier"],
-	"rules": {
-		"no-var": "error",
-		"no-multiple-empty-lines": "error",
-		"no-console": ["error", { "allow": ["log", "warn", "error", "info"] }],
-		"eqeqeq": "error",
-		"dot-notation": "error",
-		"no-unused-vars": "error",
-		"no-alert": "off",
-		"react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
-		"import/extensions": [
-			"error",
-			"ignorePackages",
-			{
-				"js": "never",
-				"jsx": "never"
-			}
-		]
-	},
-	"settings": {
-		"import/resolver": {
-			"node": {
-				"extensions": [".js", ".jsx"]
-			}
-		}
-	}
-}
+<a href='https://pre-onboarding-12th-1-6.vercel.app/' target='_blank'>👉 배포 링크 👈 </a>
+
+## 👥 팀원
+
+<table border>
+  <tbody>
+    <tr>
+      <td align="center" width="200px">
+        <img width="100%" src="https://avatars.githubusercontent.com/u/106734517?v=4"  alt=""/><br />
+        <a href="https://github.com/iziz9">
+          <img src="https://img.shields.io/badge/강현주-1E90FF?style=flat-round&logo=GitHub&logoColor=white"/>
+        </a>
+      </td>
+      <td align="center" width="200px">
+        <img width="100%" src="https://avatars.githubusercontent.com/u/94212747?s=96&v=4"  alt=""/><br />
+        <a href="https://github.com/NR0617">
+          <img src="https://img.shields.io/badge/오나래-1E90FF?style=flat-round&logo=GitHub&logoColor=white"/>
+        </a>
+      </td>
+      <td align="center" width="200px">
+        <img width="100%" src="https://avatars.githubusercontent.com/u/80497049?s=96&v=4"  alt=""/>
+        <a href="https://github.com/thumbthing">
+          <img src="https://img.shields.io/badge/이민구-1E90FF?style=flat-round&logo=GitHub&logoColor=white"/>
+        </a>
+      </td>
+      <td align="center" width="200px">
+        <img width="100%" src="https://avatars.githubusercontent.com/u/68311202?s=96&v=4"  alt=""/>
+        <a href="https://github.com/slowteady">
+          <img src="https://img.shields.io/badge/이용민-1E90FF?style=flat-round&logo=GitHub&logoColor=white"/>
+        </a>
+      </td>
+      <td align="center" width="200px">
+        <img width="100%" src="https://avatars.githubusercontent.com/u/110447844?s=96&v=4"  alt=""/>
+        <a href="https://github.com/337yj">
+          <img src="https://img.shields.io/badge/이윤정-1E90FF?style=flat-round&logo=GitHub&logoColor=white"/>
+        </a>
+      </td>
+     </tr>
+  </tbody>
+</table>
+<br/>
+
+## 실행 방법
+
+1. 로컬 환경에 프로젝트 복사본 생성
+
+```
+git clone https://github.com/pre-onboarding-12th-team6/pre-onboarding-12th-2-6
 ```
 
-```json
-//prettier
-{
-	"printWidth": 80,
-	"tabWidth": 2,
-	"useTabs": true,
-	"semi": true,
-	"singleQuote": true,
-	"bracketSpacing": true
-}
+2. 프로젝트 폴더로 이동
+
+```
+cd pre-onboarding-12th-2-6
 ```
 
-- 생산성 증가를 위해 자체적인 lint 규칙을 설정
+3. 프로젝트 종속성 설치
 
----
+```
+npm install
+```
 
-# API 관리
+4. 프로젝트 실행
+
+```
+npm start
+```
+
+## 기술 스택
+
+<img src='https://user-images.githubusercontent.com/123078739/234895132-18ab503a-fcc7-486d-b89a-cb0cc1f7796b.svg' />
+<img src='https://user-images.githubusercontent.com/123078739/234895162-42f905c6-765d-44d2-bcb1-b011286ef6b2.svg' />
+<img src='https://camo.githubusercontent.com/6cafef69921d1cdf4aac79e0b96cfb4d58c2cfa08d791d31178da11e3d75f78c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6178696f732d3541323945343f7374796c653d666f722d7468652d6261646765266c6f676f3d6178696f73266c6f676f436f6c6f723d7768697465' />
+<img src='https://user-images.githubusercontent.com/123078739/234895191-c1198a7b-9e2e-499a-8e61-c3b87bf8e2c2.svg' />
+<img src='https://camo.githubusercontent.com/2350f320fdbfd9c83a5b01c23d90d29021f8f296075425b78603ba24d816818e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f70726574746965722d4637423933453f7374796c653d666f722d7468652d6261646765266c6f676f3d7072657474696572266c6f676f436f6c6f723d626c61636b' />
+<img src='https://user-images.githubusercontent.com/123078739/234895185-7fd6c334-faca-4520-8551-2f20b32f085e.svg' />
+<img src='https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white' />
+
+## 프로젝트 구조
+
+```
+📂src/
+	api/
+		axiosInstance.js
+		request.js
+	common/
+		Header.jsx
+		Loading.jsx
+	detail/
+		DetailPage.jsx
+	error/
+		ErrorPage.jsx
+	hooks/
+		useApiHook.js
+		useInfiniteScroll.js
+	main/
+		AdBanner.jsx
+		IssueItem.jsx
+		MainPage.jsx
+	routes/
+		routePath.js
+		Router.jsx
+	util/
+		dateParsing.js
+	app.jsx
+	globalStyles.js
+	index.jsx
+```
+
+- 프로젝트 규모가 작기 때문에 관리해야 할 파일이 많지 않았기 때문에 폴더 구조에서 불필요한 depth를 줄여 개발 편의성을 높이기 위해 위와 같은 구조를 사용했습니다.
+- src 폴더 아래 각 페이지 또는 기능의 이름을 폴더로 생성하고, 하위에 해당 폴더에서 필요한 컴포넌트를 넣는 방식으로 구성했습니다.
+
+## Best Practice
+
+> 논리적인 디렉토리 구조, 코드의 가독성과 재사용성을 기준으로 중심 기능별 최선의 방법을 선정했습니다.
+
+### 1. API 관리
 
 ```js
 const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
@@ -98,7 +166,7 @@ export const getIssuesDetail = (id) => {
 - axios 인스턴스 사용으로 코드 중복을 효과적으로 줄일 수 있다고 생각되어 선정했습니다.
 - Organization Name과 Repository Name을 재활용하여 HTTP 요청과 헤더 레이아웃 양쪽에 사용한 점을 긍정적으로 생각하여 선정했습니다.
 
-# Custom Hooks
+### 2. Custom Hooks
 
 ```js
 function useApiHook(fetchFunction, params) {
@@ -138,47 +206,13 @@ function useApiHook(fetchFunction, params) {
 
 - 요청에 필요한 함수, 파라미터를 인자로 받아 필요한 state들을 리턴해주는 Custom Hook을 구현했습니다.
 - 로딩, 에러, 페이지 여부 상태를 리턴해주어 상태에 따른 처리가 수월한 환경을 구성했습니다.
+- 커스텀 훅 naming convention에 맞게 훅의 이름을 `use-` 로 시작하도록 명칭을 지정했습니다.
 
 ❓ 선정 이유
 
-- 요청이 필요한 컴포넌트마다 요청 로직을 구현할 필요가 없도록 hooks를 구현하여 사용한 점이 재사용성 측면에서 효율적이라고 생각하여 선정했습니다.
+- 요청이 필요한 컴포넌트마다 불필요한 state를 생성하지 않고 요청 로직을 구현할 필요가 없도록 hooks를 구현하여 사용한 점이 재사용성 측면에서 효율적이라고 생각하여 선정했습니다.
 
-# Error Page
-
-- page
-
-```javascript
-const ErrorPage = () => {
-	const navigate = useNavigate();
-
-	const returnToMainPage = useCallback(() => {
-		navigate('/');
-	}, [navigate]);
-
-	return (
-		<PageContainer>
-			<div>
-				<Header>사용할 수 없는 페이지 입니다.</Header>
-			</div>
-			<div>
-				<Subheader>
-					이용에 불편을 드려 죄송합니다 <br /> 주소를 다시 한 번 확인해주세요
-				</Subheader>
-			</div>
-			<ButtonWrapper>
-				<Button onClick={returnToMainPage}>메인 페이지로</Button>
-			</ButtonWrapper>
-		</PageContainer>
-	);
-};
-```
-
-1. Router를 통해 잘못된 경로로 접속했을 경우 렌더링
-2. 메인 페이지로 이동하는 기능 구현
-
----
-
-# Route
+### 3. Route
 
 - Path Properties
 
@@ -243,10 +277,15 @@ function App() {
 }
 ```
 
-1. 관심사 분리를 기준으로 path의 요소들을 분리하여 관리
-2. 가독성 증대를 위해 path의 요소들을 선언하여 Router에서 사용
+- 관심사 분리를 기준으로 path의 요소들을 분리하여 관리하였습니다.
+- 관리의 편의성과 가독성 증대를 위해 pathname을 객체로 분리하여 Router에서 사용하였습니다.
+- root, error 경로 접근 시 replace 처리하여 history 사용을 방지시켰습니다.
 
-# Date Parsing 유틸 함수 사용
+❓ 선정 이유
+
+- useRoutes 데이터의 객체화, 이슈 핸들링 처리를 하여 코드 관리하는데 효율적이라 생각해서 선정하였습니다.
+
+### 4. Date Parsing 유틸 함수 사용
 
 ```js
 // src/util/dateParsing.js
@@ -261,11 +300,11 @@ export const dateParsing = (created_at) => {
 ```
 
 - issueItem과 detail 컴포넌트에서는 불필요한 state 사용을 줄이기 위해 `useApiHook` 커스텀 훅을 통해 내려받은 리턴값을 사용해 화면을 렌더링합니다.
-- 리턴된 값 중 텍스트로 표시해야 하는 `create_at` 속성의 타입이 string이 아니기 때문에 parsing하는 로직이 필요했는데, 두 군데서 같은 로직을 사용하기 때문에 회의를 통해 util 폴더를 생성해 함수로 분리하기로 하였습니다.
+- 리턴된 값 중 텍스트로 표시해야 하는 `create_at`가 '0000-00-00T00:00:00' 형식으로 구성되었기 때문에 파싱이 필요했는데, 두 군데서 같은 로직을 사용하기 때문에 회의를 통해 util 폴더를 생성해 함수로 분리하기로 하였습니다.
 
-# 무한스크롤
+### 5. 무한스크롤
 
-```tsx
+```js
 import { useCallback, useRef } from 'react';
 
 function useInfiniteScroll(hasNextPage, setPage) {
@@ -295,7 +334,7 @@ function useInfiniteScroll(hasNextPage, setPage) {
 export default useInfiniteScroll;
 ```
 
-```tsx
+```js
 // main/MainPage.jsx
 
 const lastItemRef = useInfiniteScroll(hasNextPage, setPage);
@@ -312,3 +351,105 @@ const lastItemRef = useInfiniteScroll(hasNextPage, setPage);
 
 - Custom Hook을 사용하여 코드를 모듈화하고 별도의 함수로 분리함으로써 관심사를 분리하고 코드의 유지보수성을 향상시킬 수 있어 선정하였습니다.
 - Custom Hook을 이용하면 다른 컴포넌트에서도 쉽게 재사용할 수 있고 확장성을 높일 수 있을 것 같아 선정하였습니다.
+
+## 팀 규칙
+
+### 커밋 컨벤션
+
+🗒️ Pull Request rule
+
+1. 제목은 이와 같이 작성한다: [작성자 이니셜] 타입키워드: 작업설명 / e.g. [YNL] chore: 라우터돔 세팅
+2. feature 브랜치는 **반드시** develop 브랜치로만 PR한다. master 브랜치로 병합 요청시 PR요청을 취소한다. (또는 관리자 권한으로 취소시킬 수 있다.)
+
+🗒️ commit message rule
+
+1. 제목과 본문을 빈 행으로 구분한다.
+2. 최대한 한글로 작성한다.
+3. 제목은 50글자 내로 제한한다.
+4. 제목 끝에 마침표를 찍지 않는다.
+5. 제목은 명령문으로 사용하며, 과거형을 사용하지 않는다.
+6. 어떻게 보다는 무엇과 왜
+7. 아래 표를 참고하여 접두로 사용한다.
+
+| Type 키워드 | 사용 시점                                                             |
+| ----------- | --------------------------------------------------------------------- |
+| feat        | 새로운 기능 추가                                                      |
+| fix         | 버그 수정                                                             |
+| docs        | 문서 수정                                                             |
+| style       | 코드 스타일 변경 (코드 포매팅, 세미콜론 누락 등)기능 수정이 없는 경우 |
+| design      | 사용자 UI 디자인 변경 (CSS 등)                                        |
+| test        | 테스트 코드, 리팩토링 테스트 코드 추가                                |
+| refactor    | 코드 리팩토링                                                         |
+| build       | 빌드 파일 수정                                                        |
+| ci          | CI 설정 파일 수정                                                     |
+| chore       | 빌드 업무 수정, 패키지 매니저 수정 (gitignore 수정 등)                |
+| rename      | 파일 혹은 폴더명을 수정만 한 경우                                     |
+| remove      | 파일을 삭제만 한 경우                                                 |
+
+### 코드관리 전략
+
+- git-flow
+
+  - `main` : 배포를 위한 브랜치
+  - `develop` : 개발 소스의 최신 버전을 정리한 브랜치
+  - `feature` : 신규 작업 수행 시 기본적으로 사용하는 브랜치
+
+- 브랜치를 병합하기 전, `git fetch origin` 명령을 수행하여 최신버전을 반드시 확인한다.
+
+- 커밋 메시지는 개인이 식별하기 쉽도록 자유롭게 작성하되,
+  develop 브런치에 반영할 때의 메세지는 `[작업자 이니셜] 작업내용 요약` 으로 통일한다.
+
+- Pull Request는 최소 1개의 팀원 리뷰로 approve 상태일 때 merge할 수 있다.
+
+### 프로젝트 세팅
+
+- coding convention rule
+
+```json
+// lint
+{
+	"parser": "@babel/eslint-parser",
+	"extends": ["react-app", "eslint:recommended", "prettier"],
+	"rules": {
+		"no-var": "error",
+		"no-multiple-empty-lines": "error",
+		"no-console": ["error", { "allow": ["log", "warn", "error", "info"] }],
+		"eqeqeq": "error",
+		"dot-notation": "error",
+		"no-unused-vars": "error",
+		"no-alert": "off",
+		"react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never"
+			}
+		]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx"]
+			}
+		}
+	}
+}
+```
+
+```json
+//prettier
+{
+	"printWidth": 80,
+	"tabWidth": 2,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"bracketSpacing": true
+}
+```
+
+- 자체적으로 Lint 규칙을 설정하여 협업을 위한 컨벤션을 맞추어 생산성을 증대 시켰습니다.
+
+---
