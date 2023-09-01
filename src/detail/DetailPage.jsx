@@ -17,12 +17,12 @@ const DetailPage = () => {
 		console.log(data);
 		setIssueDetail(data);
 		setLoading(false);
-		if (loading) console.log(issueDetail);
 	};
-
 	useEffect(() => {
 		requestGetIssueDetail();
 	}, []);
+
+	console.log(loading);
 
 	return (
 		<Wrapper>
