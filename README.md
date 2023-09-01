@@ -1,3 +1,95 @@
+# API 관리
+
+```js
+const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const axiosInstance = axios.create({
+	baseURL: BASE_URL,
+	timeout: 5000,
+});
+
+axiosInstance.interceptors.request.use((config) => {
+	if (ACCESS_TOKEN) {
+		config.headers.Authorization = ACCESS_TOKEN;
+	}
+
+	return config;
+});
+```
+
+- axios 인스턴스 생성을 하고 인터셉터를 이용하여 토큰 유무에 따른 헤더 설정을 분기처리 했습니다.
+- API 요청 주소와 토큰을 .env 파일을 사용하여 환경 변수로 관리했습니다.
+
+```js
+import { axiosInstance as apiClient } from './axiosInstance';
+
+export const ORGANIZATION = 'Facebook';
+export const REPOSITORY = 'React';
+const PATH = `${ORGANIZATION}/${REPOSITORY}/issues`.toLowerCase();
+
+export const getIssuesList = (params) => {
+	return apiClient.get(PATH, params);
+};
+
+export const getIssuesDetail = (id) => {
+	return apiClient.get(`${PATH}/${id}`);
+};
+```
+
+- alias 설정으로 보다 직관적인 함수명을 사용하였습니다.
+- Organization Name과 Repository Name을 상수로 관리하여 헤더 레이아웃쪽에서 재활용 할 수 있도록 했습니다.
+
+❓ 선정 이유
+
+- axios 인스턴스 사용으로 코드 중복을 효과적으로 줄일 수 있다고 생각되어 선정했습니다.
+- Organization Name과 Repository Name을 재활용하여 HTTP 요청과 헤더 레이아웃 양쪽에 사용한 점을 긍정적으로 생각하여 선정했습니다.
+
+# Custom Hooks
+
+```js
+function useApiHook(fetchFunction, params) {
+ const [issues, setIssues] = useState([]);
+ const [isLoading, setIsLoading] = useState(false);
+ const [isError, setIsError] = useState(false);
+ const [hasNextPage, setHasNextPage] = useState(false);
+
+ useEffect(() => {
+  async function fetchData() {
+   setIsLoading(true);
+   setIsError(false);
+
+   try {
+    const response = await fetchFunction(params);
+                  .
+                  .
+                  .
+
+   } catch (err) {
+    setIsLoading(false);
+    setIsError(true);
+
+    if (err instanceof Error) {
+     alert(`Error: ${err.message}`);
+    } else {
+     alert(ERROR_MESSAGES);
+    }
+   }
+  }
+  fetchData();
+ }, [fetchFunction, params]);
+
+ return { issues, isLoading, isError, hasNextPage };
+}
+```
+
+- 요청에 필요한 함수, 파라미터를 인자로 받아 필요한 state들을 리턴해주는 Custom Hook을 구현했습니다.
+- 로딩, 에러, 페이지 여부 상태를 리턴해주어 상태에 따른 처리가 수월한 환경을 구성했습니다.
+
+❓ 선정 이유
+
+- 요청이 필요한 컴포넌트마다 요청 로직을 구현할 필요가 없도록 hooks를 구현하여 사용한 점이 재사용성 측면에서 효율적이라고 생각하여 선정했습니다.
+
 # Error Page
 
 - page
