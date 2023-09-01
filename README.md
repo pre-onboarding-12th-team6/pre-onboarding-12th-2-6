@@ -1,9 +1,9 @@
-# TEAM6 - Todo 애플리케이션
+# TEAM6 - github issue application
 
-프리온보딩 1주차에 진행한 과제물입니다. <br/>
-기간 : 2023.08.22. ~ 2023.08.25. <br />
+프리온보딩 2주차에 진행한 과제물입니다. <br/>
+기간 : 2023.08.29. ~ 2023.09.01. <br />
 
-<a href='https://pre-onboarding-12th-1-6.vercel.app/' target='_blank'>👉 배포 링크 👈 </a>
+<a href='https://resonant-sopapillas-f1ec03.netlify.app/' target='_blank'>👉 배포 링크 👈 </a>
 
 ## 👥 팀원
 
