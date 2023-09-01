@@ -26,8 +26,6 @@ const ErrorPage = () => {
 	);
 };
 
-export default ErrorPage;
-
 const PageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -67,3 +65,5 @@ const Button = styled.button`
 		background-color: #0056b3;
 	}
 `;
+
+export default ErrorPage;
