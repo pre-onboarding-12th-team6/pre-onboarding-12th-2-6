@@ -33,12 +33,6 @@ const Router = () => {
 			path: Path.errorRedirect,
 			element: <Navigate to={Path.error} />,
 			replace: true,
-			children: [
-				{
-					path: Path.errorRedirect,
-					element: <Navigate to={Path.error} />,
-				},
-			],
 		},
 		{
 			path: Path.error,
