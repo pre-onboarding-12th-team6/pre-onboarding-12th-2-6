@@ -9,10 +9,6 @@ const ErrorPage = () => {
 		navigate('/');
 	}, [navigate]);
 
-	const returnToPreviousPage = useCallback(() => {
-		navigate(-1);
-	}, [navigate]);
-
 	return (
 		<PageContainer>
 			<div>
@@ -24,14 +20,11 @@ const ErrorPage = () => {
 				</Subheader>
 			</div>
 			<ButtonWrapper>
-				<Button onClick={returnToPreviousPage}>이전 페이지로</Button>
 				<Button onClick={returnToMainPage}>메인 페이지로</Button>
 			</ButtonWrapper>
 		</PageContainer>
 	);
 };
-
-export default ErrorPage;
 
 const PageContainer = styled.div`
 	display: flex;
@@ -72,3 +65,5 @@ const Button = styled.button`
 		background-color: #0056b3;
 	}
 `;
+
+export default ErrorPage;
