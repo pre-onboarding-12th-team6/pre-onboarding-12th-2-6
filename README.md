@@ -1,3 +1,56 @@
+# 프로젝트 세팅
+
+- coding convention rule
+
+```json
+// lint
+{
+	"parser": "@babel/eslint-parser",
+	"extends": ["react-app", "eslint:recommended", "prettier"],
+	"rules": {
+		"no-var": "error",
+		"no-multiple-empty-lines": "error",
+		"no-console": ["error", { "allow": ["log", "warn", "error", "info"] }],
+		"eqeqeq": "error",
+		"dot-notation": "error",
+		"no-unused-vars": "error",
+		"no-alert": "off",
+		"react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never"
+			}
+		]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx"]
+			}
+		}
+	}
+}
+```
+
+```json
+//prettier
+{
+	"printWidth": 80,
+	"tabWidth": 2,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"bracketSpacing": true
+}
+```
+
+- 생산성 증가를 위해 자체적인 lint 규칙을 설정
+
+---
+
 # API 관리
 
 ```js
@@ -89,6 +142,7 @@ function useApiHook(fetchFunction, params) {
 ❓ 선정 이유
 
 - 요청이 필요한 컴포넌트마다 요청 로직을 구현할 필요가 없도록 hooks를 구현하여 사용한 점이 재사용성 측면에서 효율적이라고 생각하여 선정했습니다.
+
 
 # Error Page
 
