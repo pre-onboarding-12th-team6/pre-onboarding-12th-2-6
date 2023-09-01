@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const IssueItem = ({ issue }) => {
-	const { number, title, user, created_at, comments } = issue;
+	const { number, title, login, created_at, comments } = issue;
 
 	const navigate = useNavigate();
 	const createdData = new Date(created_at).toLocaleDateString('ko-KR', {
@@ -33,7 +33,7 @@ const IssueItem = ({ issue }) => {
 				<div className="about-record">
 					<div className="issue-user">
 						<span>작성자 : </span>
-						<span>{user.login},</span>
+						<span>{login},</span>
 					</div>
 					<div className="issue-date">{createdData}</div>
 				</div>
@@ -58,6 +58,8 @@ const IssueInfoSection = styled.section`
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	width: 70%;
+	flex-grow: 1;
 
 	.about-issue {
 		display: flex;

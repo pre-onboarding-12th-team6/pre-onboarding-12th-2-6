@@ -1,51 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { getIssuesList } from '../api/request';
 import AdBanner from './AdBanner';
 import IssueItem from './IssueItem';
 import Loading from '../common/Loading';
 import useObserver from '../hooks/useInfiniteScroll';
+import useApiHook from '../hooks/useApiHook';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
+const INIT_PAGE = 1;
+const QUERY_PARAMS = {
+	state: 'open',
+	sort: 'comments',
+	direction: 'desc',
+	per_page: 10,
+};
 
 const MainPage = () => {
-	const [issueList, setIssueList] = useState([]);
-	const [loading, setLoading] = useState(false);
-	const [nextPage, setNextPage] = useState(true);
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(INIT_PAGE);
+	const navigate = useNavigate();
 
-	const getIssues = async () => {
-		setLoading(true);
-		const { data } = await getIssuesList({
-			sort: 'comments',
-			page,
-			state: 'open',
-		});
+	const params = useMemo(() => {
+		return {
+			params: {
+				...QUERY_PARAMS,
+				page,
+			},
+		};
+	}, [page]);
 
-		if (data.length === 0) {
-			setNextPage(false);
-		} else {
-			setIssueList((prev) => [...prev, ...data]);
-			setPage((prev) => prev + 1);
-		}
-		setLoading(false);
-	};
+	const { issues, isLoading, isError, hasNextPage } = useApiHook(
+		getIssuesList,
+		params,
+	);
+	const lastItemRef = useObserver(hasNextPage, setPage);
 
-	console.log(issueList);
-	useEffect(() => {
-		getIssues();
-	}, []);
-
-	const loadMore = async () => {
-		if (nextPage && !loading) {
-			await getIssues();
-		}
-	};
-
-	const targetRef = useObserver(loadMore, [nextPage, loading]);
+	if (isError) {
+		navigate('/error');
+	}
 
 	return (
 		<main>
 			<Wrap>
-				{issueList.map((issue, idx) => {
+				{issues.map((issue, idx) => {
 					const isBannerVisible = (idx + 1) % 4 === 0;
 					return (
 						<li key={`${issue.number}-${idx}`}>
@@ -54,9 +51,9 @@ const MainPage = () => {
 						</li>
 					);
 				})}
-				{loading && <Loading />}
+				{isLoading && <Loading />}
 
-				<div ref={targetRef} />
+				<div ref={lastItemRef} />
 			</Wrap>
 		</main>
 	);
